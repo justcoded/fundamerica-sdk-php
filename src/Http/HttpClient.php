@@ -23,7 +23,7 @@ class HttpClient
     public function __construct(string $baseUrl, string $authKey, array $defaultHeaders = [])
     {
         $apiHeaders = [
-            'Cache-control' => 'no-cache',
+            'Cache-Control' => 'no-cache',
             'Accept'        => 'application/json',
             'Content-Type'  => 'application/json',
         ];
@@ -42,7 +42,7 @@ class HttpClient
      */
     public static function make(string $baseUrl, string $authKey, array $defaultHeaders = []): self
     {
-        return new static($baseUrl, $authKey);
+        return new static($baseUrl, $authKey, $defaultHeaders);
     }
 
     /**

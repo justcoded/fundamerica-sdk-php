@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace FundAmerica\Resources;
 
-use App\Modules\FundAmerica\Sdk\Core\ApiResponse;
-use App\Modules\FundAmerica\Sdk\Objects\SigningLink;
+use FundAmerica\Objects\SignLink;
 use ReflectionException;
 
 /**
@@ -23,7 +22,7 @@ class EscrowAgreement extends Resource
 	public $signed;
 
 	/**
-	 * @var SigningLink[]
+	 * @var SignLink[]
 	 */
 	public $signing_links;
 
@@ -35,7 +34,7 @@ class EscrowAgreement extends Resource
 	/**
 	 * EscrowAgreement constructor.
 	 *
-	 * @param array|object|ApiResponse|null $response
+	 * @param array|object|null $response
 	 *
 	 * @throws ReflectionException
 	 */
@@ -46,11 +45,11 @@ class EscrowAgreement extends Resource
 		$signingLinks = [];
 		foreach ($this->signing_links as $type => $signingLink) {
 			if (is_object($signingLink)) {
-				$signingLinks[] = new SigningLink((array)$signingLink);
+				$signingLinks[] = new SignLink((array)$signingLink);
 				continue;
 			}
 			$data = ['type' => $type] + $signingLink;
-			$signingLinks[] = new SigningLink($data);
+			$signingLinks[] = new SignLink($data);
 		}
 
 		$this->signing_links = $signingLinks;
@@ -64,7 +63,6 @@ class EscrowAgreement extends Resource
 			$this->electronic_signatures = $signs;
 		}
 	}
-
 
 	/**
 	 * @inheritDoc

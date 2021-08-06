@@ -12,11 +12,11 @@ use FundAmerica\Resources\EntityRelationship;
 class EntityRelationshipService extends Service
 {
     /**
-     * @param Response $response
+     * @param $response
      *
      * @return EntityRelationship
      */
-    protected function toResource(Response $response): EntityRelationship
+    protected function toResource($response): EntityRelationship
     {
         return new EntityRelationship($response);
     }

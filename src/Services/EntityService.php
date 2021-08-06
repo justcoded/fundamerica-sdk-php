@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace FundAmerica\Services;
 
-use Illuminate\Http\Client\Response;
 use FundAmerica\Resources\Entity;
 use FundAmerica\Resources\Entity as EntityResource;
 use ReflectionException;
@@ -12,13 +11,13 @@ use ReflectionException;
 class EntityService extends Service
 {
     /**
-     * @param Response $response
+     * @param $response
      *
      * @return EntityResource
      */
-    protected function toResource(Response $response): EntityResource
+    protected function toResource($response): EntityResource
     {
-        return new Entity($response->body());
+        return new Entity($response);
     }
 
     public function all()

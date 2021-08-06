@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace FundAmerica\Services;
 
 use Exception;
-use Illuminate\Http\Client\Response;
 use FundAmerica\Resources\BackgroundCheck;
 use FundAmerica\Resources\Entity;
 use FundAmerica\Resources\Offering;
@@ -13,11 +12,11 @@ use FundAmerica\Resources\Offering;
 class BackgroundCheckService extends Service
 {
     /**
-     * @param Response $response
+     * @param $response
      *
      * @return BackgroundCheck
      */
-    protected function toResource(Response $response): BackgroundCheck
+    protected function toResource($response): BackgroundCheck
     {
         return new BackgroundCheck($response);
     }

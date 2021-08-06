@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace FundAmerica\Services;
 
-use Illuminate\Http\Client\Response;
 use FundAmerica\Http\HttpClient;
 use FundAmerica\Resources\Resource;
 use RuntimeException;
 
 abstract class Service
 {
-    protected const BASE_URL = 'https://apps.fundamerica.com/api';
-    protected const SANDBOX_BASE_URL = 'https://sandbox.fundamerica.com/api';
+    protected const BASE_URL = 'https://apps.fundamerica.com/api/';
+    protected const SANDBOX_BASE_URL = 'https://sandbox.fundamerica.com/api/';
 
     /**
      * @var array|static[]
@@ -42,5 +41,10 @@ abstract class Service
         return static::$instances[static::class];
     }
 
-    abstract protected function toResource(Response $response): Resource;
+    /**
+     * @param $response
+     *
+     * @return Resource
+     */
+    abstract protected function toResource($response): Resource;
 }

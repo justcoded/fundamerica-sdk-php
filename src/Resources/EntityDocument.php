@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace FundAmerica\Resources;
 
-use App\Modules\FundAmerica\app\Sdk\Objects\EntityDocumentFile;
+use FundAmerica\Objects\EntityDocumentFile;
 
 /**
  * Class EntityDocument

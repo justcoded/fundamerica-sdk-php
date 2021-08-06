@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace FundAmerica\Services;
 
-use Exception;
-use Illuminate\Http\Client\Response;
+use FundAmerica\Exceptions\FundAmericaHttpException;
+use GuzzleHttp\Exception\GuzzleException;
 use FundAmerica\Resources\EntityDocument;
 
 class EntityDocumentService extends Service
 {
     /**
-     * @param Response $response
+     * @param $response
      *
      * @return EntityDocument
      */
-    protected function toResource(Response $response): EntityDocument
+    protected function toResource($response): EntityDocument
     {
         return new EntityDocument($response);
     }
@@ -24,52 +24,51 @@ class EntityDocumentService extends Service
      * @param EntityDocument $document
      *
      * @return array
-     * @throws Exception
+     * @throws GuzzleException
      */
     public function create(EntityDocument $document): array
     {
         $documents = [];
 
         foreach ($document->files as $file) {
-            $response = $this->client
-                ->multipart()
-                ->post('entity_documents', [
-                    [
-                        'name'     => 'file',
-                        'contents' => $file->stream,
-                        'filename' => $document->name,
-                    ],
-                    [
-                        'name'     => 'content_type',
-                        'contents' => $file->content_type,
-                    ],
-                    [
-                        'name'     => 'title',
-                        'contents' => $document->title,
-                    ],
-                    [
-                        'name'     => 'description',
-                        'contents' => $document->description,
-                    ],
-                    [
-                        'name'     => 'entity_id',
-                        'contents' => $document->entity_id,
-                    ],
-                    [
-                        'name'     => 'purpose',
-                        'contents' => $document->purpose,
-                    ],
-                ]);
+            $response = $this->client->multipart('POST', 'entity_documents', [
+                [
+                    'name'     => 'file',
+                    'contents' => $file->stream,
+                    'filename' => $document->name,
+                ],
+                [
+                    'name'     => 'content_type',
+                    'contents' => $file->content_type,
+                ],
+                [
+                    'name'     => 'title',
+                    'contents' => $document->title,
+                ],
+                [
+                    'name'     => 'description',
+                    'contents' => $document->description,
+                ],
+                [
+                    'name'     => 'entity_id',
+                    'contents' => $document->entity_id,
+                ],
+                [
+                    'name'     => 'purpose',
+                    'contents' => $document->purpose,
+                ],
+            ]);
 
-            $documents[] = $this->toResource($response);
+            $documents[] = $this->toResource($response->getBody()->getContents());
         }
 
         return $documents;
     }
 
     /**
-     * @return EntityDocument[]
-     * @throws Exception
+     * @return array
+     * @throws GuzzleException
+     * @throws FundAmericaHttpException
      */
     public function get(): array
     {

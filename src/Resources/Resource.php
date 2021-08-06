@@ -37,7 +37,7 @@ abstract class Resource implements JsonSerializable
 	protected $toObjects = [];
 
     /**
-     * @param object|iterable|null $response
+     * @param object|iterable|string|null $response
      */
 	public function __construct($response = null)
 	{
