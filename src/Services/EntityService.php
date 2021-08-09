@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace FundAmerica\Services;
 
+use FundAmerica\Exceptions\FundAmericaHttpException;
 use FundAmerica\Resources\Entity;
-use FundAmerica\Resources\Entity as EntityResource;
+use GuzzleHttp\Exception\GuzzleException;
 use ReflectionException;
 
 class EntityService extends Service
@@ -13,30 +14,36 @@ class EntityService extends Service
     /**
      * @param $response
      *
-     * @return EntityResource
+     * @return Entity
      */
-    protected function toResource($response): EntityResource
+    protected function toResource($response): Entity
     {
         return new Entity($response);
     }
 
-    public function all()
+    /**
+     * @param string $id
+     *
+     * @return Entity
+     * @throws FundAmericaHttpException
+     * @throws GuzzleException
+     */
+    public function get(string $id): Entity
     {
+        $response = $this->client->get("entities/{$id}");
 
-    }
-
-    public function get()
-    {
-
+        return $this->toResource($response);
     }
 
     /**
-     * @param EntityResource $entity
+     * @param Entity $entity
      *
-     * @return EntityResource
+     * @return Entity
+     * @throws FundAmericaHttpException
+     * @throws GuzzleException
      * @throws ReflectionException
      */
-    public function create(EntityResource $entity): Entity
+    public function create(Entity $entity): Entity
     {
         $response = $this->client->post('entities', $entity->toArray());
 
@@ -45,12 +52,14 @@ class EntityService extends Service
 
     /**
      * @param string $id
-     * @param EntityResource $entity
+     * @param Entity $entity
      *
-     * @return EntityResource
+     * @return Entity
+     * @throws FundAmericaHttpException
+     * @throws GuzzleException
      * @throws ReflectionException
      */
-    public function update(string $id, EntityResource $entity): Entity
+    public function update(string $id, Entity $entity): Entity
     {
         $response = $this->client->patch("entities/{$id}", $entity->toArray());
 
