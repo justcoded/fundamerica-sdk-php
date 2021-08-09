@@ -11,11 +11,11 @@ namespace FundAmerica\Resources;
  */
 class EscrowApplication extends Resource
 {
-	/**
-	 * @inheritDoc
-	 */
-	public function getId()
-	{
-		// TODO: Implement getId() method.
-	}
+    /**
+     * @inheritDoc
+     */
+    public function getId()
+    {
+        // TODO: Implement getId() method.
+    }
 }

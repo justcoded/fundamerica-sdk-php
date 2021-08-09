@@ -20,117 +20,117 @@ use ReflectionProperty;
  */
 abstract class Resource implements JsonSerializable
 {
-	public const DATE_FORMAT = 'Y-m-d';
+    public const DATE_FORMAT = 'Y-m-d';
 
-	/**
-	 * Dates
-	 *
-	 * @var array
-	 */
-	protected $toDates = [];
+    /**
+     * Dates
+     *
+     * @var array
+     */
+    protected $toDates = [];
 
-	/**
-	 * Dates
-	 *
-	 * @var array
-	 */
-	protected $toObjects = [];
+    /**
+     * Dates
+     *
+     * @var array
+     */
+    protected $toObjects = [];
 
     /**
      * @param object|iterable|string|null $response
      */
-	public function __construct($response = null)
-	{
-		if (! $response) {
-			return;
-		}
-
-		if (is_string($response)) {
-		    $response = json_decode($response);
+    public function __construct($response = null)
+    {
+        if (! $response) {
+            return;
         }
 
-		foreach ($response as $key => $value) {
-			if (! property_exists($this, $key)) {
-				continue;
-			}
+        if (is_string($response)) {
+            $response = json_decode($response);
+        }
 
-			if ((new ReflectionProperty($this, $key))->isPublic()) {
-				$this->{$key} = $this->parseValue($key, $value);
+        foreach ($response as $key => $value) {
+            if (! property_exists($this, $key)) {
+                continue;
+            }
 
-				continue;
-			}
+            if ((new ReflectionProperty($this, $key))->isPublic()) {
+                $this->{$key} = $this->parseValue($key, $value);
 
-			$setter = 'set' . Str::studly($key);
+                continue;
+            }
 
-			if (method_exists($this, $setter)) {
-				$this->{$setter}($this->parseValue($key, $value));
-			}
-		}
-	}
+            $setter = 'set' . Str::studly($key);
 
-	/**
-	 * Get Id
-	 *
-	 * @return mixed
-	 */
-	abstract public function getId();
+            if (method_exists($this, $setter)) {
+                $this->{$setter}($this->parseValue($key, $value));
+            }
+        }
+    }
 
-	/**
-	 * To Array
-	 *
-	 * @return array
-	 * @throws ReflectionException
-	 */
-	public function toArray(): array
-	{
-		$resource = array_filter(object_properties($this));
+    /**
+     * Get Id
+     *
+     * @return mixed
+     */
+    abstract public function getId();
 
-		foreach ($resource as $key => $value) {
-			if ($value instanceof BaseObject) {
-				$resource[$key] = $value->toArray();
+    /**
+     * To Array
+     *
+     * @return array
+     * @throws ReflectionException
+     */
+    public function toArray(): array
+    {
+        $resource = array_filter(object_properties($this));
 
-				continue;
-			}
+        foreach ($resource as $key => $value) {
+            if ($value instanceof BaseObject) {
+                $resource[$key] = $value->toArray();
 
-			if ($value instanceof CarbonInterface) {
-				$resource[$key] = $value->format(static::DATE_FORMAT);
+                continue;
+            }
 
-				continue;
-			}
+            if ($value instanceof CarbonInterface) {
+                $resource[$key] = $value->format(static::DATE_FORMAT);
 
-			if (is_array($value) && Arr::first($value) instanceof BaseObject) {
-				$array = [];
-				foreach ($value as $item) {
-					$array[] = $item->toArray();
-				}
+                continue;
+            }
 
-				$resource[$key] = $array;
-			}
-		}
+            if (is_array($value) && Arr::first($value) instanceof BaseObject) {
+                $array = [];
+                foreach ($value as $item) {
+                    $array[] = $item->toArray();
+                }
 
-		return $resource;
-	}
+                $resource[$key] = $array;
+            }
+        }
 
-	/**
-	 * Parse Value
-	 *
-	 * @param $key
-	 * @param $value
-	 *
-	 * @return Carbon|CarbonInterface
-	 */
-	protected function parseValue($key, $value)
-	{
-		if (array_key_exists($key, $this->toDates)) {
-			return Carbon::parse($value);
-		}
+        return $resource;
+    }
 
-		if (array_key_exists($key, $this->toObjects) && is_array($value)) {
-			return new $this->toObjects[$key]($value);
-		}
+    /**
+     * Parse Value
+     *
+     * @param $key
+     * @param $value
+     *
+     * @return Carbon|CarbonInterface
+     */
+    protected function parseValue($key, $value)
+    {
+        if (array_key_exists($key, $this->toDates)) {
+            return Carbon::parse($value);
+        }
 
-		return $value;
-	}
+        if (array_key_exists($key, $this->toObjects) && is_array($value)) {
+            return new $this->toObjects[$key]($value);
+        }
+
+        return $value;
+    }
 
     /**
      * @return string

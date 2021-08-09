@@ -159,7 +159,7 @@ class HttpClient
      */
     public function patch(string $uri, array $params = null): object
     {
-        $response = $this->request('PATCH',$uri, $params);
+        $response = $this->request('PATCH', $uri, $params);
 
         return $this->decode($response);
     }

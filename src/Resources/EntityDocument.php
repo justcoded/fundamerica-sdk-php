@@ -11,30 +11,53 @@ use FundAmerica\Objects\EntityDocumentFile;
  *
  * @package App\Modules\FundAmerica\app\Sdk\Resources
  */
-class EntityDocument extends Entity
+class EntityDocument extends Resource
 {
-	/**
-	 * @var EntityDocumentFile[]
-	 */
-	public $files = [];
+    /**
+     * @var string
+     */
+    public $id;
 
-	/**
-	 * @var string
-	 */
-	public $title;
+    /**
+     * @var EntityDocumentFile[]
+     */
+    public $files = [];
 
-	/**
-	 * @var string
-	 */
-	public $description;
+    /**
+     * @var string
+     */
+    public $title;
 
-	/**
-	 * @var string
-	 */
-	public $entity_id;
+    /**
+     * @var string
+     */
+    public $description;
 
-	/**
-	 * @var string
-	 */
-	public $purpose = 'kyc';
+    /**
+     * @var string
+     */
+    public $entity_id;
+
+    /**
+     * @var string
+     */
+    public $purpose = 'kyc';
+
+    /**
+     * @var string
+     */
+    public $content_type;
+
+    /**
+     * @var int
+     */
+    public $size;
+
+    /**
+     * @return mixed|string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

@@ -11,29 +11,29 @@ namespace FundAmerica\Resources;
  */
 class ElectronicSignature extends Resource
 {
-	public $id;
-	public $url;
-	public $anchor_id;
-	public $company;
-	public $document_url;
-	public $email;
-	public $literal;
-	public $name;
-	public $signable;
-	public $signed;
-	public $signed_at;
-	public $title;
+    public $id;
+    public $url;
+    public $anchor_id;
+    public $company;
+    public $document_url;
+    public $email;
+    public $literal;
+    public $name;
+    public $signable;
+    public $signed;
+    public $signed_at;
+    public $title;
 
-	/**
-	 * @var array
-	 */
-	public $data;
+    /**
+     * @var array
+     */
+    public $data;
 
-	/**
-	 * @inheritDoc
-	 */
-	public function getId()
-	{
-		return $this->id;
-	}
+    /**
+     * @inheritDoc
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

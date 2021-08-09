@@ -11,11 +11,11 @@ namespace FundAmerica\Resources;
  */
 class TransferAgentAgreement extends Resource
 {
-	/**
-	 * @inheritDoc
-	 */
-	public function getId()
-	{
-		// TODO: Implement getId() method.
-	}
+    /**
+     * @inheritDoc
+     */
+    public function getId()
+    {
+        // TODO: Implement getId() method.
+    }
 }

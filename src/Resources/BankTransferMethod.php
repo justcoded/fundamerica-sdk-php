@@ -11,21 +11,21 @@ namespace FundAmerica\Resources;
  */
 class BankTransferMethod extends Resource
 {
-	public const TYPE_ACH = 'ach';
-	public const TYPE_WIRE = 'wire';
+    public const TYPE_ACH = 'ach';
+    public const TYPE_WIRE = 'wire';
 
-	public $id;
-	public $account_number;
-	public $name_on_account;
-	public $routing_number;
-	public $type;
-	public $use_for_investor_payments;
+    public $id;
+    public $account_number;
+    public $name_on_account;
+    public $routing_number;
+    public $type;
+    public $use_for_investor_payments;
 
-	/**
-	 * @return mixed
-	 */
-	public function getId()
-	{
-		return $this->id;
-	}
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

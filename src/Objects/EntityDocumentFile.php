@@ -11,13 +11,13 @@ namespace FundAmerica\Objects;
  */
 class EntityDocumentFile extends BaseObject
 {
-	/**
-	 * @var string
-	 */
-	public $content_type;
+    /**
+     * @var string
+     */
+    public $content_type;
 
-	/**
-	 * @var resource
-	 */
-	public $stream;
+    /**
+     * @var resource
+     */
+    public $stream;
 }
