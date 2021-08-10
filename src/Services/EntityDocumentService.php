@@ -7,6 +7,8 @@ namespace FundAmerica\Services;
 use FundAmerica\Exceptions\FundAmericaHttpException;
 use GuzzleHttp\Exception\GuzzleException;
 use FundAmerica\Resources\EntityDocument;
+use Illuminate\Support\Arr;
+use LenderKit\Services\MimeType\MimeType;
 
 class EntityDocumentService extends Service
 {
@@ -35,7 +37,7 @@ class EntityDocumentService extends Service
                 [
                     'name'     => 'file',
                     'contents' => $file->stream,
-                    'filename' => $document->name,
+                    'filename' => $document->title . '.' . Arr::first(MimeType::getExtensions($file->content_type)),
                 ],
                 [
                     'name'     => 'content_type',
