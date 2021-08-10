@@ -5,7 +5,8 @@
   "authors": [
     {
       "name": "JustCoded Team",
-      "email": "hello@justcoded.com"
+      "email": "hello@justcoded.com",
+      "homepage": "https://justcoded.com"
     }
   ],
   "require": {
