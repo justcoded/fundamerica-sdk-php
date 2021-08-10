@@ -1,7 +1,7 @@
 {
   "name": "justcoded/fundamerica-sdk-php",
   "description": "FundAmerica SDK for PHP",
-  "license": "https://spdx.org/licenses/AGPL-3.0-or-later.html",
+  "license": "GPL-3.0-or-later",
   "authors": [
     {
       "name": "JustCoded Team",
