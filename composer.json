@@ -1,0 +1,23 @@
+{
+  "name": "justcoded/fundamerica-sdk-php",
+  "description": "FundAmerica SDK for PHP",
+  "homepage": "https://justcoded.com",
+  "license": "https://justcoded.com",
+  "authors": [
+    {
+      "name": "JustCoded Team",
+      "email": "hello@justcoded.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "ext-json": "*",
+    "guzzlehttp/guzzle": "^7.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "FundAmerica\\": "src/"
+    }
+  },
+  "minimum-stability": "dev"
+}
