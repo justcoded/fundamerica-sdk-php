@@ -51,7 +51,6 @@ class EntityService extends Service
     }
 
     /**
-     * @param string $id
      * @param Entity $entity
      *
      * @return Entity
@@ -59,9 +58,9 @@ class EntityService extends Service
      * @throws GuzzleException
      * @throws ReflectionException
      */
-    public function update(string $id, Entity $entity): Entity
+    public function update(Entity $entity): Entity
     {
-        $response = $this->client->patch("entities/{$id}", $entity->toArray());
+        $response = $this->client->patch("entities/{$entity->getId()}", $entity->toArray());
 
         return $this->toResource($response);
     }

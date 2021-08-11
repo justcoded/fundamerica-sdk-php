@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace FundAmerica\Services;
 
 use Exception;
+use FundAmerica\Exceptions\FundAmericaHttpException;
 use FundAmerica\Resources\BackgroundCheck;
 use FundAmerica\Resources\Entity;
 use FundAmerica\Resources\Offering;
+use GuzzleHttp\Exception\GuzzleException;
 
 class BackgroundCheckService extends Service
 {
@@ -26,7 +28,8 @@ class BackgroundCheckService extends Service
      * @param Offering $offering
      *
      * @return BackgroundCheck
-     * @throws Exception
+     * @throws FundAmericaHttpException
+     * @throws GuzzleException
      */
     public function create(Entity $entity, Offering $offering)
     {

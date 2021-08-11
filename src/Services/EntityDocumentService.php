@@ -72,7 +72,7 @@ class EntityDocumentService extends Service
      * @throws GuzzleException
      * @throws FundAmericaHttpException
      */
-    public function get(): array
+    public function all(): array
     {
         $response = $this->client->get('entity_documents');
         if (is_string($response)) {
