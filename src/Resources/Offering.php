@@ -164,7 +164,7 @@ class Offering extends Resource
     /**
      * Offering constructor.
      *
-     * @param ApiResponse|object|null $response
+     * @param object|iterable|string|null $response
      *
      * @throws ReflectionException
      */
@@ -173,7 +173,7 @@ class Offering extends Resource
         parent::__construct($response);
 
         if (! empty($this->wire_details)) {
-            $this->wire_details = new WireDetails($this->wire_details);
+            $this->wire_details = new WireDetails((array)$this->wire_details);
         }
     }
 }

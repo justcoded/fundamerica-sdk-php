@@ -22,8 +22,6 @@ abstract class BaseObject implements JsonSerializable
     protected $toObjects = [];
 
     /**
-     * BaseObject constructor.
-     *
      * @param array $params
      */
     public function __construct(array $params = [])
@@ -64,10 +62,11 @@ abstract class BaseObject implements JsonSerializable
 
     /**
      * @return array
+     * @throws ReflectionException
      */
     public function toArray(): array
     {
-        return array_filter(json_decode(json_encode($this)));
+        return array_filter(object_properties($this));
     }
 
     /**
