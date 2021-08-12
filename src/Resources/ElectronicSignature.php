@@ -11,11 +11,16 @@ namespace FundAmerica\Resources;
  */
 class ElectronicSignature extends Resource
 {
+    public const ANCHOR_ID_ISSUER_SIGNATURE = 'issuer_signature';
+    public const ANCHOR_ID_TRUSTEE_SIGNATURE = 'trustee_signature';
+
     public $id;
     public $url;
     public $anchor_id;
     public $company;
     public $document_url;
+    public $ip_address;
+    public $user_agent;
     public $email;
     public $literal;
     public $name;
@@ -23,6 +28,11 @@ class ElectronicSignature extends Resource
     public $signed;
     public $signed_at;
     public $title;
+
+    /**
+     * @var array
+     */
+    public $metadata;
 
     /**
      * @var array
