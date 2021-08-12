@@ -7,11 +7,6 @@ namespace FundAmerica\Resources;
 use FundAmerica\Objects\SignLink;
 use ReflectionException;
 
-/**
- * Class EscrowAgreement
- *
- * @package App\Modules\FundAmerica\app\Sdk\Resources
- */
 class EscrowAgreement extends Resource
 {
     public $id;

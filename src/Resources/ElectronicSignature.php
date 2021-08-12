@@ -13,6 +13,7 @@ class ElectronicSignature extends Resource
 {
     public const ANCHOR_ID_ISSUER_SIGNATURE = 'issuer_signature';
     public const ANCHOR_ID_TRUSTEE_SIGNATURE = 'trustee_signature';
+    public const ANCHOR_ID_TECHNOLOGIES_SIGNATURE = 'technologies_signature';
 
     public $id;
     public $url;
