@@ -36,4 +36,18 @@ class EscrowApplicationService extends Service
 
         return $this->toResource($response);
     }
+
+    /**
+     * @param string $id
+     *
+     * @return EscrowApplication
+     * @throws FundAmericaHttpException
+     * @throws GuzzleException
+     */
+    public function get(string $id): EscrowApplication
+    {
+        $response = $this->client->get("escrow_service_applications/{$id}");
+
+        return $this->toResource($response);
+    }
 }

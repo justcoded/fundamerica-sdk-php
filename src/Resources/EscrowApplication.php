@@ -6,6 +6,10 @@ namespace FundAmerica\Resources;
 
 class EscrowApplication extends Resource
 {
+    public const STATUS_ACCEPTED = 'accepted';
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_DENIED = 'denied';
+
     public $id;
     public $offering_id;
     public $escrow_agreement_id;
