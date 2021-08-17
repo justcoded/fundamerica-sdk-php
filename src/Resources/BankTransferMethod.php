@@ -37,6 +37,12 @@ class BankTransferMethod extends Resource
     public $entity_url;
     public bool $use_for_investor_payments = false;
 
+    protected $toDates = [
+        'created_at',
+        'updated_at',
+        'cancelled_at',
+    ];
+
     /**
      * @return mixed
      */
