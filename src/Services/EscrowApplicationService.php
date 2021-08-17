@@ -46,8 +46,6 @@ class EscrowApplicationService extends Service
      */
     public function get(string $id): EscrowApplication
     {
-        $response = $this->client->get("escrow_service_applications/{$id}");
-
-        return $this->toResource($response);
+        return $this->toResource($this->client->get("escrow_service_applications/{$id}"));
     }
 }
