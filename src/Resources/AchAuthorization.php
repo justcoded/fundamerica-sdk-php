@@ -39,7 +39,20 @@ class AchAuthorization extends Resource
     public $name;
     public $verified;
 
+    public $bank_transfer_method_url;
     public bool $use_for_investor_payments = false;
+
+    public BankTransferMethod $bank_transfer_method;
+
+    public $updated_at;
+    public $created_at;
+    public $cancelled_at;
+
+    protected $toDates = [
+        'updated_at',
+        'created_at',
+        'cancelled_at',
+    ];
 
     /**
      * @inheritDoc

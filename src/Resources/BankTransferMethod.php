@@ -19,7 +19,23 @@ class BankTransferMethod extends Resource
     public $name_on_account;
     public $routing_number;
     public $type;
-    public $use_for_investor_payments;
+    public $bank_name;
+
+    public $account_number_short;
+    public $country;
+    public $intermediary_bank_name;
+    public $intermediary_account_number;
+    public $intermediary_routing_number;
+    public $name;
+    public $swift_code;
+
+    public $created_at;
+    public $updated_at;
+    public $cancelled_at;
+    public $verified;
+
+    public $entity_url;
+    public bool $use_for_investor_payments = false;
 
     /**
      * @return mixed

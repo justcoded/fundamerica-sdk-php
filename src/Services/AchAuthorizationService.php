@@ -6,6 +6,7 @@ namespace FundAmerica\Services;
 
 use FundAmerica\Exceptions\FundAmericaHttpException;
 use FundAmerica\Resources\AchAuthorization;
+use FundAmerica\Resources\BankTransferMethod;
 use GuzzleHttp\Exception\GuzzleException;
 use ReflectionException;
 
@@ -15,10 +16,15 @@ class AchAuthorizationService extends Service
      * @param $response
      *
      * @return AchAuthorization
+     * @throws FundAmericaHttpException
+     * @throws GuzzleException
      */
     protected function toResource($response): AchAuthorization
     {
-        return new AchAuthorization($response);
+        $resource = new AchAuthorization($response);
+        $resource->bank_transfer_method = new BankTransferMethod($this->client->get($resource->bank_transfer_method_url));
+
+        return $resource;
     }
 
     /**
