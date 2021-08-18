@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace FundAmerica\Services;
 
 use FundAmerica\Exceptions\FundAmericaHttpException;
-use FundAmerica\Resources\ElectronicSignature;
 use FundAmerica\Resources\EscrowApplication;
 use GuzzleHttp\Exception\GuzzleException;
 use ReflectionException;

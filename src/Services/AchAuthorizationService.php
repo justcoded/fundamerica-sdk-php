@@ -57,14 +57,14 @@ class AchAuthorizationService extends Service
     }
 
     /**
-     * @return AchAuthorization
+     * @return string
      * @throws FundAmericaHttpException
      * @throws GuzzleException
      */
-    public function agreement(): AchAuthorization
+    public function agreement(): string
     {
         $response = $this->client->get("ach_authorizations/agreement_html");
 
-        return $this->toResource($response);
+        return$response->agreement_html;
     }
 }
