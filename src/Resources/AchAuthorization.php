@@ -42,7 +42,7 @@ class AchAuthorization extends Resource
     public $bank_transfer_method_url;
     public bool $use_for_investor_payments = false;
 
-    public BankTransferMethod $bank_transfer_method;
+    public $bank_transfer_method;
 
     public $updated_at;
     public $created_at;
