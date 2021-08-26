@@ -2,13 +2,8 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Resources;
+namespace JustCoded\FundAmerica\Resources;
 
-/**
- * Class InvestorPayment
- *
- * @package App\Modules\FundAmerica\Sdk\Resources
- */
 class InvestorPayment extends Resource
 {
     public $id;

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Services;
+namespace JustCoded\FundAmerica\Services;
 
 use Exception;
 use Illuminate\Http\Client\Response;
-use FundAmerica\Resources\Entity;
-use FundAmerica\Resources\EntityRelationship;
+use JustCoded\FundAmerica\Resources\Entity;
+use JustCoded\FundAmerica\Resources\EntityRelationship;
 
-class EntityRelationshipService extends Service
+class EntityRelationshipsService extends Service
 {
     /**
      * @param $response

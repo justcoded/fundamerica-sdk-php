@@ -2,13 +2,8 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Resources;
+namespace JustCoded\FundAmerica\Resources;
 
-/**
- * Class EntityRelationship
- *
- * @package App\Modules\FundAmerica\app\Sdk\Resources
- */
 class EntityRelationship extends Resource
 {
     public $id;

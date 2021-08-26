@@ -2,13 +2,8 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Objects;
+namespace JustCoded\FundAmerica\Objects;
 
-/**
- * Class SigningLink
- *
- * @package App\Modules\FundAmerica\app\Sdk\Objects
- */
 class SignLink extends BaseObject
 {
     public const TYPE_ISSUER_SIGNATURE = 'issuer_signature';

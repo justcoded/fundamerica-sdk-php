@@ -2,16 +2,11 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Resources;
+namespace JustCoded\FundAmerica\Resources;
 
-use FundAmerica\Objects\SignLink;
+use JustCoded\FundAmerica\Objects\SignLink;
 use ReflectionException;
 
-/**
- * Class EscrowAgreement
- *
- * @package App\Modules\FundAmerica\app\Sdk\Resources
- */
 class TechServicesAgreement extends Resource
 {
     public $id;

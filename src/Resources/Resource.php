@@ -2,22 +2,17 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Resources;
+namespace JustCoded\FundAmerica\Resources;
 
 use Carbon\Carbon;
 use Carbon\CarbonInterface;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use JsonSerializable;
-use FundAmerica\Objects\BaseObject;
+use JustCoded\FundAmerica\Objects\BaseObject;
 use ReflectionException;
 use ReflectionProperty;
 
-/**
- * Class Resource
- *
- * @package App\Modules\FundAmerica\app\Sdk\Resources
- */
 abstract class Resource implements JsonSerializable
 {
     public const DATE_FORMAT = 'Y-m-d';
@@ -26,6 +21,7 @@ abstract class Resource implements JsonSerializable
      * Dates
      *
      * @var array
+     * TODO: replace with $casts
      */
     protected $toDates = [];
 
@@ -33,6 +29,7 @@ abstract class Resource implements JsonSerializable
      * Dates
      *
      * @var array
+     * TODO: replace with $casts
      */
     protected $toObjects = [];
 

@@ -2,13 +2,8 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Resources;
+namespace JustCoded\FundAmerica\Resources;
 
-/**
- * Class BankTransferMethodResource
- *
- * @package App\Modules\FundAmerica\Sdk\Resources
- */
 class BankTransferMethod extends Resource
 {
     public const TYPE_ACH = 'ach';

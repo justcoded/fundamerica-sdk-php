@@ -2,13 +2,8 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Objects;
+namespace JustCoded\FundAmerica\Objects;
 
-/**
- * Class WireDetails
- *
- * @package App\Modules\FundAmerica\app\Sdk\Objects\Offerings
- */
 class WireDetails extends BaseObject
 {
     /**

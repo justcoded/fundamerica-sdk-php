@@ -2,25 +2,28 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Http;
+namespace JustCoded\FundAmerica\Http;
 
-use FundAmerica\Exceptions\FundAmericaHttpException;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Psr7\Response;
+use JustCoded\FundAmerica\Exceptions\FundAmericaHttpException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\TransferException;
 use Psr\Http\Message\ResponseInterface;
 
 class HttpClient
 {
     protected string $baseUrl;
-    protected string $authKey;
+    protected string $apiKey;
     protected array $headers;
 
     /**
      * @param string $baseUrl
-     * @param string $authKey
+     * @param string $apiKey
      * @param array $defaultHeaders
      */
-    public function __construct(string $baseUrl, string $authKey, array $defaultHeaders = [])
+    public function __construct(string $baseUrl, string $apiKey, array $defaultHeaders = [])
     {
         $apiHeaders = [
             'Cache-Control' => 'no-cache',
@@ -30,19 +33,19 @@ class HttpClient
 
         $this->headers = $defaultHeaders + $apiHeaders;
         $this->baseUrl = $baseUrl;
-        $this->authKey = $authKey;
+        $this->apiKey = $apiKey;
     }
 
     /**
      * @param string $baseUrl
-     * @param string $authKey
+     * @param string $apiKey
      * @param array $defaultHeaders
      *
      * @return static
      */
-    public static function make(string $baseUrl, string $authKey, array $defaultHeaders = []): self
+    public static function make(string $baseUrl, string $apiKey, array $defaultHeaders = []): self
     {
-        return new static($baseUrl, $authKey, $defaultHeaders);
+        return new static($baseUrl, $apiKey, $defaultHeaders);
     }
 
     /**
@@ -67,7 +70,7 @@ class HttpClient
     {
         $config += [
             'base_uri' => $this->baseUrl,
-            'auth'     => [$this->authKey, ''],
+            'auth'     => [$this->apiKey, ''],
             'headers'  => $this->headers,
         ];
 
@@ -84,9 +87,25 @@ class HttpClient
      */
     public function request(string $method, string $uri, array $params = null): ResponseInterface
     {
-        return $this->http()->request($method, $uri, [
-            'json' => $params,
-        ]);
+        try {
+            return $this->http()->request($method, $uri, [
+                'json' => $params,
+            ]);
+        } catch (ClientException $exception) {
+            return new Response(
+                $exception->getCode(),
+                $exception->getRequest()->getHeaders(),
+                $exception->getMessage()
+            );
+        } catch (TransferException $exception) {
+            return new Response(
+                502,
+                [],
+                preg_replace('#\(see.*?\)#', '', $exception->getMessage()),
+                '1.1',
+                'Failed to connect to host'
+            );
+        }
     }
 
     /**

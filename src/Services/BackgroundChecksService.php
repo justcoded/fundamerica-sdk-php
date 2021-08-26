@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Services;
+namespace JustCoded\FundAmerica\Services;
 
 use Exception;
-use FundAmerica\Exceptions\FundAmericaHttpException;
-use FundAmerica\Resources\BackgroundCheck;
-use FundAmerica\Resources\Entity;
-use FundAmerica\Resources\Offering;
+use JustCoded\FundAmerica\Exceptions\FundAmericaHttpException;
+use JustCoded\FundAmerica\Resources\BackgroundCheck;
+use JustCoded\FundAmerica\Resources\Entity;
+use JustCoded\FundAmerica\Resources\Offering;
 use GuzzleHttp\Exception\GuzzleException;
 
-class BackgroundCheckService extends Service
+class BackgroundChecksService extends Service
 {
     /**
      * @param $response

@@ -2,13 +2,8 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Resources;
+namespace JustCoded\FundAmerica\Resources;
 
-/**
- * Class Distribution
- *
- * @package App\Modules\FundAmerica\Sdk\Resources
- */
 class Distribution extends Resource
 {
     public const PAYMENT_METHOD_ACH = 'ach';

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Resources;
+namespace JustCoded\FundAmerica\Resources;
 
 class EscrowApplication extends Resource
 {

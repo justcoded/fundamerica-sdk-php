@@ -2,43 +2,41 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Services;
+namespace JustCoded\FundAmerica\Services;
 
-use FundAmerica\Http\HttpClient;
-use FundAmerica\Resources\Resource;
+use JustCoded\FundAmerica\Http\ConnectionConfig;
+use JustCoded\FundAmerica\Http\HttpClient;
+use JustCoded\FundAmerica\Resources\Resource;
 use RuntimeException;
 
 abstract class Service
 {
-    protected const BASE_URL = 'https://apps.fundamerica.com/api/';
-    protected const SANDBOX_BASE_URL = 'https://sandbox.fundamerica.com/api/';
-
-    /**
-     * @var array|static[]
-     */
-    private static array $instances;
-
     protected HttpClient $client;
 
-    private function __construct(string $apiKey, bool $sandbox = false)
+    /**
+     * @param ConnectionConfig $config
+     */
+    private function __construct(ConnectionConfig $config)
     {
-        $baseUrl = $sandbox ? static::SANDBOX_BASE_URL : static::BASE_URL;
-
-        $this->client = HttpClient::make($baseUrl, $apiKey);
+        $this->client = HttpClient::make($config->getBaseUrl(), $config->getApiKey());
     }
 
-    private function __sleep()
+    /**
+     * @inerhitDoc
+     */
+    public function __sleep(): void
     {
         throw new RuntimeException('FundAmerica Service instance cannot be serializable');
     }
 
-    public static function make(string $apiKey, bool $sandbox = false): self
+    /**
+     * @param ConnectionConfig $config
+     *
+     * @return static
+     */
+    public static function make(ConnectionConfig $config): self
     {
-        if (empty(static::$instances[static::class])) {
-            static::$instances[static::class] = new static($apiKey, $sandbox);
-        }
-
-        return static::$instances[static::class];
+        return new static($config);
     }
 
     /**
