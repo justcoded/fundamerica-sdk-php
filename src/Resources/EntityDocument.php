@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Resources;
+namespace JustCoded\FundAmerica\Resources;
 
-use FundAmerica\Objects\EntityDocumentFile;
+use JustCoded\FundAmerica\Objects\EntityDocumentFile;
 
 /**
  * Class EntityDocument
  *
- * @package App\Modules\FundAmerica\app\Sdk\Resources
+ * @package App\Modules\JustCoded\FundAmerica\app\Sdk\Resources
  */
 class EntityDocument extends Resource
 {

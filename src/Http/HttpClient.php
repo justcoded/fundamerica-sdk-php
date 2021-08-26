@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Http;
+namespace JustCoded\FundAmerica\Http;
 
-use FundAmerica\Exceptions\FundAmericaHttpException;
+use JustCoded\FundAmerica\Exceptions\FundAmericaHttpException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\TransferException;
 use Psr\Http\Message\ResponseInterface;
 
 class HttpClient
@@ -16,11 +17,10 @@ class HttpClient
     protected array $headers;
 
     /**
-     * @param string $baseUrl
-     * @param string $authKey
+     * @param ConnectionConfig $config
      * @param array $defaultHeaders
      */
-    public function __construct(string $baseUrl, string $authKey, array $defaultHeaders = [])
+    public function __construct(ConnectionConfig $config, array $defaultHeaders = [])
     {
         $apiHeaders = [
             'Cache-Control' => 'no-cache',
@@ -29,20 +29,19 @@ class HttpClient
         ];
 
         $this->headers = $defaultHeaders + $apiHeaders;
-        $this->baseUrl = $baseUrl;
-        $this->authKey = $authKey;
+        $this->baseUrl = $config->getBaseUrl();
+        $this->authKey = $config->getAuthKey();
     }
 
     /**
-     * @param string $baseUrl
-     * @param string $authKey
+     * @param ConnectionConfig $config
      * @param array $defaultHeaders
      *
      * @return static
      */
-    public static function make(string $baseUrl, string $authKey, array $defaultHeaders = []): self
+    public static function make(ConnectionConfig $config, array $defaultHeaders = []): self
     {
-        return new static($baseUrl, $authKey, $defaultHeaders);
+        return new static($config, $defaultHeaders);
     }
 
     /**
@@ -84,9 +83,19 @@ class HttpClient
      */
     public function request(string $method, string $uri, array $params = null): ResponseInterface
     {
-        return $this->http()->request($method, $uri, [
-            'json' => $params,
-        ]);
+        try {
+            return $this->http()->request($method, $uri, [
+                'json' => $params,
+            ]);
+        } catch (TransferException $exception) {
+            return new \GuzzleHttp\Psr7\Response(
+                502,
+                [],
+                preg_replace('#\(see.*?\)#', '', $exception->getMessage()),
+                '1.1',
+                'Failed to connect to host'
+            );
+        }
     }
 
     /**

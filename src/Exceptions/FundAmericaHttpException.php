@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Exceptions;
+namespace JustCoded\FundAmerica\Exceptions;
 
 use Exception;
 use Psr\Http\Message\ResponseInterface;

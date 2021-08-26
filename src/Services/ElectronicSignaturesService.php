@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Services;
+namespace JustCoded\FundAmerica\Services;
 
-use FundAmerica\Exceptions\FundAmericaHttpException;
-use FundAmerica\Resources\ElectronicSignature;
+use JustCoded\FundAmerica\Exceptions\FundAmericaHttpException;
+use JustCoded\FundAmerica\Resources\ElectronicSignature;
 use GuzzleHttp\Exception\GuzzleException;
 use ReflectionException;
 
-class ElectronicSignatureService extends Service
+class ElectronicSignaturesService extends Service
 {
     /**
      * @param $response

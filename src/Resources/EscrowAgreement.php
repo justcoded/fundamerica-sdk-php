@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Resources;
+namespace JustCoded\FundAmerica\Resources;
 
-use FundAmerica\Objects\SignLink;
+use JustCoded\FundAmerica\Objects\SignLink;
 use ReflectionException;
 
 class EscrowAgreement extends Resource

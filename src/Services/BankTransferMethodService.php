@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Services;
+namespace JustCoded\FundAmerica\Services;
 
-use FundAmerica\Exceptions\FundAmericaHttpException;
-use FundAmerica\Resources\BankTransferMethod;
+use JustCoded\FundAmerica\Exceptions\FundAmericaHttpException;
+use JustCoded\FundAmerica\Resources\BankTransferMethod;
 use GuzzleHttp\Exception\GuzzleException;
 use ReflectionException;
 

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Services;
+namespace JustCoded\FundAmerica\Services;
 
-use FundAmerica\Exceptions\FundAmericaHttpException;
+use JustCoded\FundAmerica\Exceptions\FundAmericaHttpException;
 use GuzzleHttp\Exception\GuzzleException;
-use FundAmerica\Resources\EntityDocument;
+use JustCoded\FundAmerica\Resources\EntityDocument;
 use Illuminate\Support\Arr;
 use LenderKit\Services\MimeType\MimeType;
 
-class EntityDocumentService extends Service
+class EntityDocumentsService extends Service
 {
     /**
      * @param $response

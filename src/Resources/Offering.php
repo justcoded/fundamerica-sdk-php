@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Resources;
+namespace JustCoded\FundAmerica\Resources;
 
-use App\Modules\FundAmerica\Sdk\Core\ApiResponse;
-use FundAmerica\Objects\WireDetails;
+use App\Modules\JustCoded\FundAmerica\Sdk\Core\ApiResponse;
+use JustCoded\FundAmerica\Objects\WireDetails;
 use ReflectionException;
 
 /**
  * Class Offering
  *
- * @package App\Modules\FundAmerica\app\Sdk\Resources
+ * @package App\Modules\JustCoded\FundAmerica\app\Sdk\Resources
  */
 class Offering extends Resource
 {

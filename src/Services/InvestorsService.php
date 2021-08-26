@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Services;
+namespace JustCoded\FundAmerica\Services;
 
-use FundAmerica\Resources\Investor;
-use FundAmerica\Resources\Resource;
+use JustCoded\FundAmerica\Resources\Investor;
+use JustCoded\FundAmerica\Resources\Resource;
 
-class InvestorService extends Service
+class InvestorsService extends Service
 {
     protected function toResource($response): Resource
     {

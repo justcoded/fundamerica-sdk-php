@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Resources;
+namespace JustCoded\FundAmerica\Resources;
 
 /**
  * Class InvestorPayment
  *
- * @package App\Modules\FundAmerica\Sdk\Resources
+ * @package App\Modules\JustCoded\FundAmerica\Sdk\Resources
  */
 class InvestorPayment extends Resource
 {

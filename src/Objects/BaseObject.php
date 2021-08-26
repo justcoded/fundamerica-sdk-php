@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Objects;
+namespace JustCoded\FundAmerica\Objects;
 
 use JsonSerializable;
 use ReflectionException;
@@ -10,7 +10,7 @@ use ReflectionException;
 /**
  * Class Object
  *
- * @package App\Modules\FundAmerica\app\Sdk\Objects
+ * @package App\Modules\JustCoded\FundAmerica\app\Sdk\Objects
  */
 abstract class BaseObject implements JsonSerializable
 {

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Resources;
+namespace JustCoded\FundAmerica\Resources;
 
 /**
  * Class ElectronicSignature
  *
- * @package App\Modules\FundAmerica\Sdk\Objects
+ * @package App\Modules\JustCoded\FundAmerica\Sdk\Objects
  */
 class ElectronicSignature extends Resource
 {

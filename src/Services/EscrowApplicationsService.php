@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica\Services;
+namespace JustCoded\FundAmerica\Services;
 
-use FundAmerica\Exceptions\FundAmericaHttpException;
-use FundAmerica\Resources\EscrowApplication;
+use JustCoded\FundAmerica\Exceptions\FundAmericaHttpException;
+use JustCoded\FundAmerica\Resources\EscrowApplication;
 use GuzzleHttp\Exception\GuzzleException;
 use ReflectionException;
 
-class EscrowApplicationService extends Service
+class EscrowApplicationsService extends Service
 {
     /**
      * @param $response
