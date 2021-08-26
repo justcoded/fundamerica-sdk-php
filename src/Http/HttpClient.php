@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace JustCoded\FundAmerica\Http;
 
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Psr7\Response;
 use JustCoded\FundAmerica\Exceptions\FundAmericaHttpException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
@@ -87,8 +89,14 @@ class HttpClient
             return $this->http()->request($method, $uri, [
                 'json' => $params,
             ]);
+        } catch (ClientException $exception) {
+            return new Response(
+                $exception->getCode(),
+                $exception->getRequest()->getHeaders(),
+                $exception->getMessage()
+            );
         } catch (TransferException $exception) {
-            return new \GuzzleHttp\Psr7\Response(
+            return new Response(
                 502,
                 [],
                 preg_replace('#\(see.*?\)#', '', $exception->getMessage()),
