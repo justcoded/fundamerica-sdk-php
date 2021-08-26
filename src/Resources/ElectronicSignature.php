@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 namespace JustCoded\FundAmerica\Resources;
 
-/**
- * Class ElectronicSignature
- *
- * @package App\Modules\JustCoded\FundAmerica\Sdk\Objects
- */
 class ElectronicSignature extends Resource
 {
     public const ANCHOR_ID_ISSUER_SIGNATURE = 'issuer_signature';

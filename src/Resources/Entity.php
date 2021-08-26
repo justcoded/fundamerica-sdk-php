@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 namespace JustCoded\FundAmerica\Resources;
 
-/**
- * Class EntityResource
- *
- * @package App\Modules\JustCoded\FundAmerica\app\Sdk\Resources
- */
 class Entity extends Resource
 {
     public const TYPE_PERSON = 'person';

@@ -7,11 +7,6 @@ namespace JustCoded\FundAmerica\Resources;
 use JustCoded\FundAmerica\Objects\WireDetails;
 use ReflectionException;
 
-/**
- * Class Investment
- *
- * @package App\Modules\JustCoded\FundAmerica\app\Sdk\Resources
- */
 class Investment extends Resource
 {
     public const PAYMENT_METHOD_WIRE = 'wire';

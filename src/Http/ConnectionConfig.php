@@ -33,7 +33,7 @@ class ConnectionConfig
     /**
      * @return string
      */
-    public function getAuthKey(): string
+    public function getApiKey(): string
     {
         return $this->apiKey;
     }

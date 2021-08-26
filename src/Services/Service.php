@@ -18,7 +18,7 @@ abstract class Service
      */
     private function __construct(ConnectionConfig $config)
     {
-        $this->client = HttpClient::make($config);
+        $this->client = HttpClient::make($config->getBaseUrl(), $config->getApiKey());
     }
 
     /**

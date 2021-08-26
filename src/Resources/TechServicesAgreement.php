@@ -7,11 +7,6 @@ namespace JustCoded\FundAmerica\Resources;
 use JustCoded\FundAmerica\Objects\SignLink;
 use ReflectionException;
 
-/**
- * Class EscrowAgreement
- *
- * @package App\Modules\JustCoded\FundAmerica\app\Sdk\Resources
- */
 class TechServicesAgreement extends Resource
 {
     public $id;

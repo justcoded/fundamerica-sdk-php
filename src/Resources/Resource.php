@@ -13,11 +13,6 @@ use JustCoded\FundAmerica\Objects\BaseObject;
 use ReflectionException;
 use ReflectionProperty;
 
-/**
- * Class Resource
- *
- * @package App\Modules\JustCoded\FundAmerica\app\Sdk\Resources
- */
 abstract class Resource implements JsonSerializable
 {
     public const DATE_FORMAT = 'Y-m-d';

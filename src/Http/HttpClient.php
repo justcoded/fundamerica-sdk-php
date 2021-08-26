@@ -15,14 +15,15 @@ use Psr\Http\Message\ResponseInterface;
 class HttpClient
 {
     protected string $baseUrl;
-    protected string $authKey;
+    protected string $apiKey;
     protected array $headers;
 
     /**
-     * @param ConnectionConfig $config
+     * @param string $baseUrl
+     * @param string $apiKey
      * @param array $defaultHeaders
      */
-    public function __construct(ConnectionConfig $config, array $defaultHeaders = [])
+    public function __construct(string $baseUrl, string $apiKey, array $defaultHeaders = [])
     {
         $apiHeaders = [
             'Cache-Control' => 'no-cache',
@@ -31,19 +32,20 @@ class HttpClient
         ];
 
         $this->headers = $defaultHeaders + $apiHeaders;
-        $this->baseUrl = $config->getBaseUrl();
-        $this->authKey = $config->getAuthKey();
+        $this->baseUrl = $baseUrl;
+        $this->apiKey = $apiKey;
     }
 
     /**
-     * @param ConnectionConfig $config
+     * @param string $baseUrl
+     * @param string $apiKey
      * @param array $defaultHeaders
      *
      * @return static
      */
-    public static function make(ConnectionConfig $config, array $defaultHeaders = []): self
+    public static function make(string $baseUrl, string $apiKey, array $defaultHeaders = []): self
     {
-        return new static($config, $defaultHeaders);
+        return new static($baseUrl, $apiKey, $defaultHeaders);
     }
 
     /**
@@ -68,7 +70,7 @@ class HttpClient
     {
         $config += [
             'base_uri' => $this->baseUrl,
-            'auth'     => [$this->authKey, ''],
+            'auth'     => [$this->apiKey, ''],
             'headers'  => $this->headers,
         ];
 

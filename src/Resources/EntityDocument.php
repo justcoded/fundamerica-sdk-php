@@ -6,11 +6,6 @@ namespace JustCoded\FundAmerica\Resources;
 
 use JustCoded\FundAmerica\Objects\EntityDocumentFile;
 
-/**
- * Class EntityDocument
- *
- * @package App\Modules\JustCoded\FundAmerica\app\Sdk\Resources
- */
 class EntityDocument extends Resource
 {
     /**

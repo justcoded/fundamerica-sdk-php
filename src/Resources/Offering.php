@@ -8,11 +8,6 @@ use App\Modules\JustCoded\FundAmerica\Sdk\Core\ApiResponse;
 use JustCoded\FundAmerica\Objects\WireDetails;
 use ReflectionException;
 
-/**
- * Class Offering
- *
- * @package App\Modules\JustCoded\FundAmerica\app\Sdk\Resources
- */
 class Offering extends Resource
 {
     public const ACCREDITATION_LEVEL_506c = '506c';

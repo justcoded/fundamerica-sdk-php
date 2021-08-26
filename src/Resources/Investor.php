@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 namespace JustCoded\FundAmerica\Resources;
 
-/**
- * Class Investor
- *
- * @package App\Modules\JustCoded\FundAmerica\app\Sdk\Resources
- */
 class Investor extends Resource
 {
     /**

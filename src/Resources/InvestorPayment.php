@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 namespace JustCoded\FundAmerica\Resources;
 
-/**
- * Class InvestorPayment
- *
- * @package App\Modules\JustCoded\FundAmerica\Sdk\Resources
- */
 class InvestorPayment extends Resource
 {
     public $id;
