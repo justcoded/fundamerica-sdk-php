@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FundAmerica;
+namespace JustCoded\FundAmerica;
 
 use JustCoded\FundAmerica\Http\ConnectionConfig;
 use JustCoded\FundAmerica\Services\AchAuthorizationsService;
