@@ -92,11 +92,7 @@ class HttpClient
                 'json' => $params,
             ]);
         } catch (ClientException $exception) {
-            return new Response(
-                $exception->getCode(),
-                $exception->getRequest()->getHeaders(),
-                $exception->getMessage()
-            );
+            return $exception->getResponse();
         } catch (TransferException $exception) {
             return new Response(
                 502,
