@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace JustCoded\FundAmerica;
 
 use JustCoded\FundAmerica\Http\ConnectionConfig;
+use JustCoded\FundAmerica\Http\HttpClient;
 use JustCoded\FundAmerica\Services\AchAuthorizationsService;
 use JustCoded\FundAmerica\Services\BackgroundChecksService;
 use JustCoded\FundAmerica\Services\ElectronicSignaturesService;
@@ -13,6 +14,7 @@ use JustCoded\FundAmerica\Services\EntityRelationshipsService;
 use JustCoded\FundAmerica\Services\EntitiesService;
 use JustCoded\FundAmerica\Services\EscrowAgreementsService;
 use JustCoded\FundAmerica\Services\EscrowApplicationsService;
+use JustCoded\FundAmerica\Services\InvestmentsService;
 use JustCoded\FundAmerica\Services\InvestorsService;
 use JustCoded\FundAmerica\Services\OfferingsService;
 use JustCoded\FundAmerica\Services\Service;
@@ -31,6 +33,7 @@ use RuntimeException;
  * @method ElectronicSignaturesService electronicSignatures()
  * @method EscrowApplicationsService escrowApplications()
  * @method AchAuthorizationsService achAuthorizations()
+ * @method InvestmentsService investments()
  */
 class FundAmericaSdk
 {
@@ -67,5 +70,13 @@ class FundAmericaSdk
         $this->services[$name] = $service::make($this->config);
 
         return $this->services[$name];
+    }
+
+    /**
+     * @return HttpClient
+     */
+    public function getClient(): HttpClient
+    {
+        return HttpClient::make($this->config->getBaseUrl(), $this->config->getApiKey());
     }
 }

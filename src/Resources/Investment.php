@@ -53,10 +53,12 @@ class Investment extends Resource
     public $funds_disbursable;
     public $funds_transfer_method;
     public $in_escrow_at;
+    public $investor_id;
     public $investor_url;
     public $par_value;
     public $payment_method;
     public $payment_reference;
+    public $ach_authorization_id;
 
     /**
      * @var WireDetails
