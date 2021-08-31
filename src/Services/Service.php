@@ -24,7 +24,7 @@ abstract class Service
     /**
      * @inerhitDoc
      */
-    public function __sleep(): void
+    public function __sleep(): array
     {
         throw new RuntimeException('FundAmerica Service instance cannot be serializable');
     }
