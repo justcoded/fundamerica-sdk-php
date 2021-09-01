@@ -22,7 +22,8 @@ class AchAuthorizationsService extends Service
     protected function toResource($response): AchAuthorization
     {
         $resource = new AchAuthorization($response);
-        $resource->bank_transfer_method = new BankTransferMethod($this->client->get($resource->bank_transfer_method_url));
+        $resource->bank_transfer_method =
+            new BankTransferMethod($this->client->get($resource->bank_transfer_method_url));
 
         return $resource;
     }
@@ -65,6 +66,6 @@ class AchAuthorizationsService extends Service
     {
         $response = $this->client->get("ach_authorizations/agreement_html");
 
-        return$response->agreement_html;
+        return $response->agreement_html;
     }
 }
