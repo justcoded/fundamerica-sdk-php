@@ -9,6 +9,7 @@ use JustCoded\FundAmerica\Resources\CancelOfferingRequest;
 use JustCoded\FundAmerica\Resources\CloseOfferingRequest;
 use JustCoded\FundAmerica\Resources\Offering;
 use GuzzleHttp\Exception\GuzzleException;
+use JustCoded\FundAmerica\Resources\Security;
 use ReflectionException;
 
 class OfferingsService extends Service
@@ -17,11 +18,16 @@ class OfferingsService extends Service
      * @param $response
      *
      * @return Offering
+     * @throws FundAmericaHttpException
+     * @throws GuzzleException
      * @throws ReflectionException
      */
     protected function toResource($response): Offering
     {
-        return new Offering($response);
+        $offering = new Offering($response);
+        $offering->security = new Security($this->client->get($offering->security_url));
+
+        return $offering;
     }
 
     /**

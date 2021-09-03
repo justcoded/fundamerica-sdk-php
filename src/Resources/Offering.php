@@ -6,6 +6,7 @@ namespace JustCoded\FundAmerica\Resources;
 
 use App\Modules\JustCoded\FundAmerica\Sdk\Core\ApiResponse;
 use JustCoded\FundAmerica\Objects\WireDetails;
+use JustCoded\FundAmerica\Services\SecuritiesService;
 use ReflectionException;
 
 class Offering extends Resource
@@ -149,6 +150,11 @@ class Offering extends Resource
     public $funds_transfer_methods;
 
     /**
+     * @var Security
+     */
+    public $security;
+
+    /**
      * @inheritDoc
      */
     public function getId()
@@ -168,7 +174,7 @@ class Offering extends Resource
         parent::__construct($response);
 
         if (! empty($this->wire_details)) {
-            $this->wire_details = new WireDetails((array)$this->wire_details);
+            $this->wire_details = new WireDetails((array) $this->wire_details);
         }
     }
 }

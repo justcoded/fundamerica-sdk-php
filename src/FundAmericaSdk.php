@@ -16,9 +16,11 @@ use JustCoded\FundAmerica\Services\EntityRelationshipsService;
 use JustCoded\FundAmerica\Services\EntitiesService;
 use JustCoded\FundAmerica\Services\EscrowAgreementsService;
 use JustCoded\FundAmerica\Services\EscrowApplicationsService;
+use JustCoded\FundAmerica\Services\HoldingsService;
 use JustCoded\FundAmerica\Services\InvestmentsService;
 use JustCoded\FundAmerica\Services\InvestorsService;
 use JustCoded\FundAmerica\Services\OfferingsService;
+use JustCoded\FundAmerica\Services\SecuritiesService;
 use JustCoded\FundAmerica\Services\Service;
 use JustCoded\FundAmerica\Services\TechServicesAgreementsService;
 use RuntimeException;
@@ -38,6 +40,8 @@ use RuntimeException;
  * @method InvestmentsService investments()
  * @method DisbursementsService disbursements()
  * @method DistributionsService distributions()
+ * @method SecuritiesService securities()
+ * @method HoldingsService holdings()
  */
 class FundAmericaSdk
 {
