@@ -9,6 +9,7 @@ use JustCoded\FundAmerica\Http\HttpClient;
 use JustCoded\FundAmerica\Services\AchAuthorizationsService;
 use JustCoded\FundAmerica\Services\BackgroundChecksService;
 use JustCoded\FundAmerica\Services\DisbursementsService;
+use JustCoded\FundAmerica\Services\DistributionsService;
 use JustCoded\FundAmerica\Services\ElectronicSignaturesService;
 use JustCoded\FundAmerica\Services\EntityDocumentsService;
 use JustCoded\FundAmerica\Services\EntityRelationshipsService;
@@ -36,6 +37,7 @@ use RuntimeException;
  * @method AchAuthorizationsService achAuthorizations()
  * @method InvestmentsService investments()
  * @method DisbursementsService disbursements()
+ * @method DistributionsService distributions()
  */
 class FundAmericaSdk
 {
@@ -48,6 +50,16 @@ class FundAmericaSdk
     public function __construct(ConnectionConfig $config)
     {
         $this->config = $config;
+    }
+
+    /**
+     * @param ConnectionConfig $config
+     *
+     * @return static
+     */
+    public static function make(ConnectionConfig $config): self
+    {
+        return new static($config);
     }
 
     /**
