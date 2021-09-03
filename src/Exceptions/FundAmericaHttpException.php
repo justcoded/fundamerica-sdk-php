@@ -16,7 +16,13 @@ class FundAmericaHttpException extends Exception
      */
     public function __construct(ResponseInterface $response, Throwable $previous = null)
     {
-        $responseMessage = json_decode($response->getBody()->getContents());
+        $responseContents = $response->getBody()->getContents();
+        $responseMessage = json_decode($responseContents);
+
+        if (is_null($responseMessage)) {
+            $errorMessage = $responseContents;
+            goto THROW_NEXT;
+        }
 
         $messages = [];
         foreach ($responseMessage as $error) {
@@ -29,6 +35,9 @@ class FundAmericaHttpException extends Exception
             }
         }
 
-        parent::__construct(rtrim(implode(";\n", $messages), ";\n"), $response->getStatusCode(), $previous);
+        $errorMessage = rtrim(implode(";\n", $messages), ";\n");
+
+        THROW_NEXT:
+        parent::__construct($errorMessage, $response->getStatusCode(), $previous);
     }
 }
