@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace JustCoded\FundAmerica\Objects;
 
 use JsonSerializable;
+use JustCoded\FundAmerica\Concerns\Arrayable;
 use ReflectionException;
 
-abstract class BaseObject implements JsonSerializable
+abstract class BaseObject implements Arrayable, JsonSerializable
 {
     /**
      * To Objects

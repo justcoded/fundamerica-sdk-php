@@ -9,11 +9,11 @@ use Carbon\CarbonInterface;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use JsonSerializable;
-use JustCoded\FundAmerica\Objects\BaseObject;
+use JustCoded\FundAmerica\Concerns\Arrayable;
 use ReflectionException;
 use ReflectionProperty;
 
-abstract class Resource implements JsonSerializable
+abstract class Resource implements Arrayable, JsonSerializable
 {
     public const DATE_FORMAT = 'Y-m-d';
 
@@ -66,6 +66,16 @@ abstract class Resource implements JsonSerializable
     }
 
     /**
+     * @param null $response
+     *
+     * @return static
+     */
+    public static function make($response = null): self
+    {
+        return new static($response);
+    }
+
+    /**
      * Get Id
      *
      * @return mixed
@@ -83,7 +93,7 @@ abstract class Resource implements JsonSerializable
         $resource = array_filter(object_properties($this));
 
         foreach ($resource as $key => $value) {
-            if ($value instanceof BaseObject) {
+            if ($value instanceof Arrayable) {
                 $resource[$key] = $value->toArray();
 
                 continue;
@@ -95,7 +105,7 @@ abstract class Resource implements JsonSerializable
                 continue;
             }
 
-            if (is_array($value) && Arr::first($value) instanceof BaseObject) {
+            if (is_array($value) && Arr::first($value) instanceof Arrayable) {
                 $array = [];
                 foreach ($value as $item) {
                     $array[] = $item->toArray();
