@@ -10,6 +10,12 @@ class Distribution extends Resource
     public const PAYMENT_METHOD_CHECK = 'check';
     public const PAYMENT_METHOD_WIRE = 'wire';
 
+    public const STATUS_DRAFT = 'draft';
+    public const STATUS_NOT_RECEIVED = 'not_received';
+    public const STATUS_RECEIVED = 'received';
+    public const STATUS_VOIDED = 'voided';
+    public const STATUS_DISTRIBUTED = 'distributed';
+
     public $id;
     public $authorized_name;
     public $authorized_title;
@@ -21,6 +27,7 @@ class Distribution extends Resource
     public $security_id;
     public $ach_authorization_id;
     public $ready;
+    public $status;
     public $contact_email;
     public $contact_name;
     public $contact_phone;
