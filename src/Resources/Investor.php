@@ -6,6 +6,10 @@ namespace JustCoded\FundAmerica\Resources;
 
 class Investor extends Resource
 {
+    public const TYPE_JOINT_IN_COMMON = 'jtic';
+    public const TYPE_JOINT_WITH_RIGHT_OF_SURVIVORSHIP = 'jtwros';
+    public const TYPE_IRA = 'ira';
+
     /**
      * @var string
      */

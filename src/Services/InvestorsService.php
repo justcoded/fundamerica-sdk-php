@@ -4,31 +4,56 @@ declare(strict_types=1);
 
 namespace JustCoded\FundAmerica\Services;
 
+use GuzzleHttp\Exception\GuzzleException;
+use JustCoded\FundAmerica\Exceptions\FundAmericaHttpException;
 use JustCoded\FundAmerica\Resources\Investor;
-use JustCoded\FundAmerica\Resources\Resource;
 
 class InvestorsService extends Service
 {
-    protected function toResource($response): Resource
+    /**
+     * @param $response
+     *
+     * @return Investor
+     */
+    protected function toResource($response): Investor
     {
         return new Investor($response);
     }
 
-    public function all()
+    /**
+     * @param string $id
+     *
+     * @return Investor
+     * @throws FundAmericaHttpException
+     * @throws GuzzleException
+     */
+    public function get(string $id): Investor
     {
+        $response = $this->client->get("investors/{$id}");
 
+        return $this->toResource($response);
     }
 
-    public function get()
+    /**
+     * @param string $primaryEntityId
+     * @param string|null $otherEntityIds
+     * @param string|null $jointType
+     *
+     * @return Investor
+     * @throws GuzzleException
+     * @throws FundAmericaHttpException
+     */
+    public function create(string $primaryEntityId, string $otherEntityIds = null, string $jointType = null): Investor
     {
+        $params = [
+            'primary_entity_id' => $primaryEntityId,
+        ];
 
-    }
+        if ($otherEntityIds) {
+            $params['other_entity_ids'] = $otherEntityIds;
+        }
 
-    public function create(string $entityId)
-    {
-        $response = $this->client->post('investors', [
-            'primary_entity_id' => $entityId,
-        ]);
+        $response = $this->client->post('investors', $params);
 
         return $this->toResource($response);
     }
