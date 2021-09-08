@@ -7,6 +7,7 @@ namespace JustCoded\FundAmerica;
 use JustCoded\FundAmerica\Http\ConnectionConfig;
 use JustCoded\FundAmerica\Http\HttpClient;
 use JustCoded\FundAmerica\Services\AchAuthorizationsService;
+use JustCoded\FundAmerica\Services\AmlExceptionsService;
 use JustCoded\FundAmerica\Services\BackgroundChecksService;
 use JustCoded\FundAmerica\Services\DisbursementsService;
 use JustCoded\FundAmerica\Services\DistributionsService;
@@ -42,6 +43,7 @@ use RuntimeException;
  * @method DistributionsService distributions()
  * @method SecuritiesService securities()
  * @method HoldingsService holdings()
+ * @method AmlExceptionsService amlExceptions()
  */
 class FundAmericaSdk
 {
