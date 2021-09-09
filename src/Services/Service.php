@@ -45,4 +45,23 @@ abstract class Service
      * @return Resource
      */
     abstract protected function toResource($response): Resource;
+
+    /**
+     * @param $response
+     *
+     * @return Resource[]
+     */
+    public function collect($response): array
+    {
+        if ($response->object !== 'resource_list') {
+            throw new RuntimeException('Unsupported response type for collection');
+        }
+
+        $result = [];
+        foreach ($response->resources as $resource) {
+            $result[] = $this->toResource($resource);
+        }
+
+        return $result;
+    }
 }

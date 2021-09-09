@@ -64,4 +64,18 @@ class EntitiesService extends Service
 
         return $this->toResource($response);
     }
+
+    /**
+     * @param string $id
+     *
+     * @return array
+     * @throws FundAmericaHttpException
+     * @throws GuzzleException
+     */
+    public function amlExceptions(string $id): array
+    {
+        $response = $this->client->get("entities/{$id}/aml_exceptions");
+
+        return $this->collect($response);
+    }
 }
