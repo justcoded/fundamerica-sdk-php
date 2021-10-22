@@ -61,7 +61,7 @@ class DisbursementsService extends Service
      */
     public function get(string $id): Disbursement
     {
-        $response = $this->client->get("disbursements/$id}");
+        $response = $this->client->get("disbursements/{$id}");
 
         return $this->toResource($response);
     }
