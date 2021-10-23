@@ -106,4 +106,32 @@ class OfferingsService extends Service
 
         return new CancelOfferingRequest($response);
     }
+
+    /**
+     * @param string $id
+     *
+     * @return CloseOfferingRequest
+     * @throws FundAmericaHttpException
+     * @throws GuzzleException
+     */
+    public function getCloseRequest(string $id): CloseOfferingRequest
+    {
+        $response = $this->client->get("close_offering_requests/{$id}");
+
+        return new CloseOfferingRequest($response);
+    }
+
+    /**
+     * @param string $id
+     *
+     * @return CancelOfferingRequest
+     * @throws FundAmericaHttpException
+     * @throws GuzzleException
+     */
+    public function getCancelRequest(string $id): CancelOfferingRequest
+    {
+        $response = $this->client->get("cancel_offering_requests/{$id}");
+
+        return new CancelOfferingRequest($response);
+    }
 }
