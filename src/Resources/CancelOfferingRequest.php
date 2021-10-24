@@ -7,8 +7,8 @@ namespace JustCoded\FundAmerica\Resources;
 class CancelOfferingRequest extends Resource
 {
     public const STATUS_PENDING = 'pending';
-    public const STATUS_CONFIRMED = 'confirmed';
-    public const STATUS_RESCINDED = 'rescinded';
+    public const STATUS_ACCEPTED = 'accepted';
+    public const STATUS_DENIED = 'denied';
 
     public $id;
     public $comment;
