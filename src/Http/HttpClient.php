@@ -17,6 +17,7 @@ class HttpClient
     protected string $baseUrl;
     protected string $apiKey;
     protected array $headers;
+	protected static string $client = Client::class;
 
     /**
      * @param string $baseUrl
@@ -61,12 +62,7 @@ class HttpClient
         return $this;
     }
 
-    /**
-     * @param array|null $config
-     *
-     * @return Client
-     */
-    protected function http(array $config = []): Client
+    protected function http(array $config = [])
     {
         $config += [
             'base_uri' => $this->baseUrl,
@@ -74,8 +70,13 @@ class HttpClient
             'headers'  => $this->headers,
         ];
 
-        return new Client($config);
+        return new static::$client($config);
     }
+
+	public static function setClient(string $class)
+	{
+		static::$client = $class;
+	}
 
     /**
      * @param string $method
@@ -85,7 +86,7 @@ class HttpClient
      * @return ResponseInterface
      * @throws GuzzleException
      */
-    public function request(string $method, string $uri, array $params = null): ResponseInterface
+    public function request(string $method, string $uri, array $params = null)
     {
         try {
             return $this->http()->request($method, $uri, [
