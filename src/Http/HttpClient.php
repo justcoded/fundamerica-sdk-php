@@ -86,7 +86,7 @@ class HttpClient
      * @return ResponseInterface
      * @throws GuzzleException
      */
-    public function request(string $method, string $uri, array $params = null)
+    public function request(string $method, string $uri, array $params = null): ResponseInterface
     {
         try {
             return $this->http()->request($method, $uri, [
