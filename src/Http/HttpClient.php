@@ -12,12 +12,11 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\TransferException;
 use Psr\Http\Message\ResponseInterface;
 
-class HttpClient
+class HttpClient implements HttpClientInterface
 {
     protected string $baseUrl;
     protected string $apiKey;
     protected array $headers;
-	protected static string $client = Client::class;
 
     /**
      * @param string $baseUrl
@@ -62,7 +61,14 @@ class HttpClient
         return $this;
     }
 
-    protected function http(array $config = [])
+	/**
+	 * Http
+	 *
+	 * @param array $config
+	 *
+	 * @return Client
+	 */
+    protected function http(array $config = []): Client
     {
         $config += [
             'base_uri' => $this->baseUrl,
@@ -70,13 +76,8 @@ class HttpClient
             'headers'  => $this->headers,
         ];
 
-        return new static::$client($config);
+        return new Client($config);
     }
-
-	public static function setClient(string $class)
-	{
-		static::$client = $class;
-	}
 
     /**
      * @param string $method
