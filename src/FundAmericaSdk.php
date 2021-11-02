@@ -96,6 +96,6 @@ class FundAmericaSdk
 
     public function getClient(): HttpClientInterface
     {
-        return (new HttpClientFactory($this->config))->make();
+        return HttpClientFactory::make($this->config);
     }
 }

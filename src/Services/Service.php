@@ -19,7 +19,7 @@ abstract class Service
      */
     private function __construct(ConnectionConfig $config)
     {
-        $this->client = (new HttpClientFactory($config))->make();
+        $this->client = HttpClientFactory::make($config);
     }
 
     /**
