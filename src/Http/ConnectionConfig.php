@@ -46,17 +46,14 @@ class ConnectionConfig
     public function setHttpClientClass(string $httpClientClass): void
     {
         if (! is_a($httpClientClass, $clientInterface = HttpClientInterface::class, true)) {
-            throw new InvalidArgumentException("Class {$httpClientClass} must implement [{$clientInterface}]");
+            throw new InvalidArgumentException("HTTP Client class {$httpClientClass} must implement [{$clientInterface}]");
         }
 
         $this->httpClientClass = $httpClientClass;
     }
 
-    public function getHttpClient(): HttpClientInterface
+    public function getHttpClient(): string
     {
-        return app($this->httpClientClass, [
-            'baseUrl' => $this->baseUrl,
-            'apiKey'  => $this->apiKey,
-        ]);
+        return $this->httpClientClass;
     }
 }

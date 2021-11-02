@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace JustCoded\FundAmerica;
 
 use JustCoded\FundAmerica\Http\ConnectionConfig;
+use JustCoded\FundAmerica\Http\HttpClientFactory;
 use JustCoded\FundAmerica\Http\HttpClientInterface;
 use JustCoded\FundAmerica\Services\AchAuthorizationsService;
 use JustCoded\FundAmerica\Services\AmlExceptionsService;
@@ -95,6 +96,6 @@ class FundAmericaSdk
 
     public function getClient(): HttpClientInterface
     {
-        return $this->config->getHttpClient();
+        return (new HttpClientFactory($this->config))->make();
     }
 }

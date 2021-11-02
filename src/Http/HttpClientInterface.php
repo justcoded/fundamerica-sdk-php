@@ -8,8 +8,6 @@ use Psr\Http\Message\ResponseInterface;
 
 interface HttpClientInterface
 {
-    public function __construct(string $baseUrl, string $apiKey, array $defaultHeaders = []);
-
     public static function make(string $baseUrl, string $apiKey, array $defaultHeaders = []): self;
 
     public function addHeader(string $header, string $value): self;
