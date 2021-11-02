@@ -12,9 +12,9 @@ use JustCoded\FundAmerica\Services\BackgroundChecksService;
 use JustCoded\FundAmerica\Services\DisbursementsService;
 use JustCoded\FundAmerica\Services\DistributionsService;
 use JustCoded\FundAmerica\Services\ElectronicSignaturesService;
+use JustCoded\FundAmerica\Services\EntitiesService;
 use JustCoded\FundAmerica\Services\EntityDocumentsService;
 use JustCoded\FundAmerica\Services\EntityRelationshipsService;
-use JustCoded\FundAmerica\Services\EntitiesService;
 use JustCoded\FundAmerica\Services\EscrowAgreementsService;
 use JustCoded\FundAmerica\Services\EscrowApplicationsService;
 use JustCoded\FundAmerica\Services\HoldingsService;
@@ -48,6 +48,7 @@ use RuntimeException;
 class FundAmericaSdk
 {
     protected ConnectionConfig $config;
+
     protected array $services = [];
 
     /**

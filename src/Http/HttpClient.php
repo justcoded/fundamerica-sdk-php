@@ -4,18 +4,20 @@ declare(strict_types=1);
 
 namespace JustCoded\FundAmerica\Http;
 
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Psr7\Response;
-use JustCoded\FundAmerica\Exceptions\FundAmericaHttpException;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\TransferException;
+use GuzzleHttp\Psr7\Response;
+use JustCoded\FundAmerica\Exceptions\FundAmericaHttpException;
 use Psr\Http\Message\ResponseInterface;
 
 class HttpClient implements HttpClientInterface
 {
     protected string $baseUrl;
+
     protected string $apiKey;
+
     protected array $headers;
 
     /**
@@ -61,13 +63,13 @@ class HttpClient implements HttpClientInterface
         return $this;
     }
 
-	/**
-	 * Http
-	 *
-	 * @param array $config
-	 *
-	 * @return Client
-	 */
+    /**
+     * Http
+     *
+     * @param array $config
+     *
+     * @return Client
+     */
     protected function http(array $config = []): Client
     {
         $config += [
