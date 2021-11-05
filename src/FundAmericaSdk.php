@@ -22,6 +22,7 @@ use JustCoded\FundAmerica\Services\HoldingsService;
 use JustCoded\FundAmerica\Services\InvestmentsService;
 use JustCoded\FundAmerica\Services\InvestorsService;
 use JustCoded\FundAmerica\Services\OfferingsService;
+use JustCoded\FundAmerica\Services\SandboxDisbursementsService;
 use JustCoded\FundAmerica\Services\SandboxInvestmentsService;
 use JustCoded\FundAmerica\Services\SecuritiesService;
 use JustCoded\FundAmerica\Services\Service;
@@ -37,6 +38,7 @@ use RuntimeException;
  * @method OfferingsService offerings()
  * @method EscrowAgreementsService escrowAgreements()
  * @method SandboxInvestmentsService sandboxInvestments()
+ * @method SandboxDisbursementsService sandboxDisbursements()
  * @method TechServicesAgreementsService techServicesAgreements()
  * @method ElectronicSignaturesService electronicSignatures()
  * @method EscrowApplicationsService escrowApplications()
