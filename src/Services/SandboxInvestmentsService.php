@@ -29,7 +29,7 @@ class SandboxInvestmentsService extends Service
      * @return Investment
      * @throws ReflectionException
      */
-    public function markInvestmentPaid(string $id, string $status): Investment
+    public function updateStatus(string $id, string $status): Investment
     {
         $response = $this->client->patch("test_mode/investments/{$id}", ['status' => $status]);
 
