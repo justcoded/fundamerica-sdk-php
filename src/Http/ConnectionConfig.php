@@ -4,13 +4,18 @@ declare(strict_types=1);
 
 namespace JustCoded\FundAmerica\Http;
 
+use InvalidArgumentException;
+
 class ConnectionConfig
 {
     protected const BASE_URL = 'https://apps.fundamerica.com/api/';
     protected const SANDBOX_BASE_URL = 'https://sandbox.fundamerica.com/api/';
 
     protected string $baseUrl;
+
     protected string $apiKey;
+
+    protected string $httpClientClass = HttpClient::class;
 
     /**
      * @param string $apiKey
@@ -36,5 +41,19 @@ class ConnectionConfig
     public function getApiKey(): string
     {
         return $this->apiKey;
+    }
+
+    public function setHttpClientClass(string $httpClientClass): void
+    {
+        if (! is_a($httpClientClass, $clientInterface = HttpClientInterface::class, true)) {
+            throw new InvalidArgumentException("HTTP Client class {$httpClientClass} must implement [{$clientInterface}]");
+        }
+
+        $this->httpClientClass = $httpClientClass;
+    }
+
+    public function getHttpClient(): string
+    {
+        return $this->httpClientClass;
     }
 }

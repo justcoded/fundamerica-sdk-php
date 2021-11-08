@@ -5,22 +5,25 @@ declare(strict_types=1);
 namespace JustCoded\FundAmerica;
 
 use JustCoded\FundAmerica\Http\ConnectionConfig;
-use JustCoded\FundAmerica\Http\HttpClient;
+use JustCoded\FundAmerica\Http\HttpClientFactory;
+use JustCoded\FundAmerica\Http\HttpClientInterface;
 use JustCoded\FundAmerica\Services\AchAuthorizationsService;
 use JustCoded\FundAmerica\Services\AmlExceptionsService;
 use JustCoded\FundAmerica\Services\BackgroundChecksService;
 use JustCoded\FundAmerica\Services\DisbursementsService;
 use JustCoded\FundAmerica\Services\DistributionsService;
 use JustCoded\FundAmerica\Services\ElectronicSignaturesService;
+use JustCoded\FundAmerica\Services\EntitiesService;
 use JustCoded\FundAmerica\Services\EntityDocumentsService;
 use JustCoded\FundAmerica\Services\EntityRelationshipsService;
-use JustCoded\FundAmerica\Services\EntitiesService;
 use JustCoded\FundAmerica\Services\EscrowAgreementsService;
 use JustCoded\FundAmerica\Services\EscrowApplicationsService;
 use JustCoded\FundAmerica\Services\HoldingsService;
 use JustCoded\FundAmerica\Services\InvestmentsService;
 use JustCoded\FundAmerica\Services\InvestorsService;
 use JustCoded\FundAmerica\Services\OfferingsService;
+use JustCoded\FundAmerica\Services\SandboxDisbursementsService;
+use JustCoded\FundAmerica\Services\SandboxInvestmentsService;
 use JustCoded\FundAmerica\Services\SecuritiesService;
 use JustCoded\FundAmerica\Services\Service;
 use JustCoded\FundAmerica\Services\TechServicesAgreementsService;
@@ -34,6 +37,8 @@ use RuntimeException;
  * @method BackgroundChecksService backgroundChecks()
  * @method OfferingsService offerings()
  * @method EscrowAgreementsService escrowAgreements()
+ * @method SandboxInvestmentsService sandboxInvestments()
+ * @method SandboxDisbursementsService sandboxDisbursements()
  * @method TechServicesAgreementsService techServicesAgreements()
  * @method ElectronicSignaturesService electronicSignatures()
  * @method EscrowApplicationsService escrowApplications()
@@ -48,6 +53,7 @@ use RuntimeException;
 class FundAmericaSdk
 {
     protected ConnectionConfig $config;
+
     protected array $services = [];
 
     /**
@@ -92,11 +98,8 @@ class FundAmericaSdk
         return $this->services[$name];
     }
 
-    /**
-     * @return HttpClient
-     */
-    public function getClient(): HttpClient
+    public function getClient(): HttpClientInterface
     {
-        return HttpClient::make($this->config->getBaseUrl(), $this->config->getApiKey());
+        return HttpClientFactory::make($this->config);
     }
 }

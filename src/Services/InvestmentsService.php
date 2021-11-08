@@ -51,4 +51,38 @@ class InvestmentsService extends Service
 
         return $this->toResource($response);
     }
+
+    /**
+     * @param string $id
+     *
+     * @return Investment
+     * @throws FundAmericaHttpException
+     * @throws GuzzleException
+     * @throws ReflectionException
+     */
+    public function invest(string $id): Investment
+    {
+        $response = $this->client->patch("investments/{$id}", [
+            'status' => Investment::STATUS_INVESTED,
+        ]);
+
+        return $this->toResource($response);
+    }
+
+    /**
+     * @param string $id
+     *
+     * @return Investment
+     * @throws FundAmericaHttpException
+     * @throws GuzzleException
+     * @throws ReflectionException
+     */
+    public function cancel(string $id): Investment
+    {
+        $response = $this->client->patch("investments/{$id}", [
+            'status' => Investment::STATUS_CANCELLED,
+        ]);
+
+        return $this->toResource($response);
+    }
 }

@@ -5,20 +5,21 @@ declare(strict_types=1);
 namespace JustCoded\FundAmerica\Services;
 
 use JustCoded\FundAmerica\Http\ConnectionConfig;
-use JustCoded\FundAmerica\Http\HttpClient;
+use JustCoded\FundAmerica\Http\HttpClientFactory;
+use JustCoded\FundAmerica\Http\HttpClientInterface;
 use JustCoded\FundAmerica\Resources\Resource;
 use RuntimeException;
 
 abstract class Service
 {
-    protected HttpClient $client;
+    protected HttpClientInterface $client;
 
     /**
      * @param ConnectionConfig $config
      */
     private function __construct(ConnectionConfig $config)
     {
-        $this->client = HttpClient::make($config->getBaseUrl(), $config->getApiKey());
+        $this->client = HttpClientFactory::make($config);
     }
 
     /**
