@@ -1,0 +1,7 @@
+# windows/Mac thumbnail cache
+Thumbs.db
+.DS_Store
+.idea
+.env
+/vendor
+composer.lock

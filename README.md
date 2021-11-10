@@ -1,1 +1,1 @@
-# fundamerica-sdk-php
+FundAmerica SDK for PHP

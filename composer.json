@@ -7,6 +7,10 @@
       "name": "JustCoded Team",
       "email": "hello@justcoded.com",
       "homepage": "https://justcoded.com"
+    },
+    {
+      "name": "Yaroslav Voitenko",
+      "email": "yaroslav.voitenko@justcoded.co"
     }
   ],
   "require": {
@@ -16,7 +20,7 @@
   },
   "autoload": {
     "psr-4": {
-      "FundAmerica\\": "src/"
+      "JustCoded\\FundAmerica\\": "src/"
     }
   },
   "minimum-stability": "dev"
