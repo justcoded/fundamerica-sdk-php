@@ -18,9 +18,9 @@ class InvestorPayment extends Resource
     public $revenue_share_amount;
     public $royalty_amount;
     public $investor_id;
+    public string $status;
     public string $bank_transfer_method_url;
     public string $entity_url;
-    public string $offering_url;
 
     /**
      * @return mixed
