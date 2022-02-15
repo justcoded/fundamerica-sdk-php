@@ -7,7 +7,6 @@ namespace JustCoded\FundAmerica\Resources;
 class InvestorPayment extends Resource
 {
     public $id;
-    public $bank_transfer_method_id;
     public $amount;
     public $dividend_amount;
     public $interest_amount;
@@ -18,8 +17,10 @@ class InvestorPayment extends Resource
     public $profit_share_amount;
     public $revenue_share_amount;
     public $royalty_amount;
-    public $distribution_id;
     public $investor_id;
+    public string $bank_transfer_method_url;
+    public string $entity_url;
+    public string $offering_url;
 
     /**
      * @return mixed
