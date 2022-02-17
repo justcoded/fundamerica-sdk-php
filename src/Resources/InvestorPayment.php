@@ -6,6 +6,11 @@ namespace JustCoded\FundAmerica\Resources;
 
 class InvestorPayment extends Resource
 {
+    public const STATUS_PENDING = 'pending'; // created, no transaction or transaction is pending
+    public const STATUS_PROCESSING = 'processing'; // transaction exist and processing
+    public const STATUS_PAID = 'paid'; // transaction is paid
+    public const STATUS_VOIDED = 'voided'; // no transaction or transaction is cancelled
+
     public $id;
     public $amount;
     public $dividend_amount;
