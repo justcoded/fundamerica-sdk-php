@@ -65,6 +65,9 @@ class DistributionsService extends Service
         return $this->toResource($response);
     }
 
+    /**
+     * @return array|Distribution[]
+     */
     public function all(): array
     {
         $response = $this->client->get("distributions");
