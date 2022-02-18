@@ -59,6 +59,7 @@ class Investment extends Resource
     public $payment_method;
     public $payment_reference;
     public $ach_authorization_id;
+    public $tokenized_credit_card_id;
 
     /**
      * @var WireDetails
