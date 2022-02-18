@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace JustCoded\FundAmerica\Services;
 
+use Generator;
 use GuzzleHttp\Exception\GuzzleException;
 use JustCoded\FundAmerica\Exceptions\FundAmericaHttpException;
 use JustCoded\FundAmerica\Resources\Distribution;
@@ -65,13 +66,17 @@ class DistributionsService extends Service
         return $this->toResource($response);
     }
 
-    /**
-     * @return array|Distribution[]
-     */
-    public function all(): array
+    public function all(): Generator
     {
-        $response = $this->client->get("distributions");
+        $page = 1;
 
-        return $this->collect($response);
+        do {
+            $response = $this->client->get("distributions?page={$page}");
+            $page++;
+
+            foreach ($response->resources as $resource) {
+                yield $this->toResource($resource);
+            }
+        } while (! empty($response->resources));
     }
 }
