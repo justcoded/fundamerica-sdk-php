@@ -23,6 +23,7 @@ class Card extends Resource
 
     public $investor_id;
     public $credit_card_cvv;
+    public $credit_card_number;
     public $last_4;
 
     protected $toDates = [
