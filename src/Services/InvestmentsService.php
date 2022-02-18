@@ -79,9 +79,7 @@ class InvestmentsService extends Service
      */
     public function cancel(string $id): Investment
     {
-        $response = $this->client->patch("investments/{$id}", [
-            'status' => Investment::STATUS_CANCELLED,
-        ]);
+        $response = $this->client->delete("investments/{$id}");
 
         return $this->toResource($response);
     }

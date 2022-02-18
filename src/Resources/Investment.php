@@ -11,6 +11,8 @@ class Investment extends Resource
 {
     public const PAYMENT_METHOD_WIRE = 'wire';
     public const PAYMENT_METHOD_ACH = 'ach';
+    public const PAYMENT_METHOD_CHECK = 'check';
+    public const PAYMENT_METHOD_CREDIT_CARD = 'credit_card';
 
     public const STATUS_NOT_RECEIVED = 'not_received';
     public const STATUS_RECEIVED = 'received';
