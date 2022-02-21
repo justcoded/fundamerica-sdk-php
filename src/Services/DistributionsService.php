@@ -81,11 +81,6 @@ class DistributionsService extends Service
     }
 
     /**
-     * All With Pagination
-     *
-     * @param int $page
-     * @param int $per
-     *
      * @return Distribution[]
      */
     public function allWithPagination(int $page = 1, int $per = 25): array
