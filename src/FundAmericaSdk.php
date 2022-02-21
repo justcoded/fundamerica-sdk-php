@@ -10,6 +10,7 @@ use JustCoded\FundAmerica\Http\HttpClientInterface;
 use JustCoded\FundAmerica\Services\AchAuthorizationsService;
 use JustCoded\FundAmerica\Services\AmlExceptionsService;
 use JustCoded\FundAmerica\Services\BackgroundChecksService;
+use JustCoded\FundAmerica\Services\CardsService;
 use JustCoded\FundAmerica\Services\DisbursementsService;
 use JustCoded\FundAmerica\Services\DistributionsService;
 use JustCoded\FundAmerica\Services\ElectronicSignaturesService;
@@ -42,6 +43,7 @@ use RuntimeException;
  * @method SandboxInvestmentsService sandboxInvestments()
  * @method SandboxDisbursementsService sandboxDisbursements()
  * @method SandboxDistributionsService sandboxDistributions()
+ * @method CardsService cards()
  * @method TechServicesAgreementsService techServicesAgreements()
  * @method ElectronicSignaturesService electronicSignatures()
  * @method EscrowApplicationsService escrowApplications()
