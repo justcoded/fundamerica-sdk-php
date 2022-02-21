@@ -79,4 +79,19 @@ class DistributionsService extends Service
             }
         } while (! empty($response->resources));
     }
+
+    /**
+     * All With Pagination
+     *
+     * @param int $page
+     * @param int $per
+     *
+     * @return Distribution[]
+     */
+    public function allWithPagination(int $page = 1, int $per = 25): array
+    {
+        $response = $this->client->get("distributions?page={$page}&per={$per}");
+
+        return $this->collect($response);
+    }
 }
