@@ -147,7 +147,7 @@ class Offering extends Resource
     /**
      * @var array
      */
-    public $funds_transfer_methods;
+    public array $funds_transfer_methods;
 
     /**
      * @var Security

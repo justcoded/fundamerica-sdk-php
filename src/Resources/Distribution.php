@@ -32,9 +32,15 @@ class Distribution extends Resource
     public $contact_name;
     public $contact_phone;
     public $company_name;
+    public string $offering_url;
 
     public function getId()
     {
         return $this->id;
+    }
+
+    public function isDistributed(): bool
+    {
+        return $this->status == static::STATUS_DISTRIBUTED;
     }
 }
