@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 * Added cards and distributions supports
 
+### Fixed
+* Fixed cancel investment
+
+### Removed
+* Remove invest investment route
+
 -------------------------------------------------------------------
 
 ## [1.0.0]() - _2021-11-10_
